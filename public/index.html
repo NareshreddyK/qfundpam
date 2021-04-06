@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Gothic+A1:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<title>QFund - CSR</title>    
+	<link rel="stylesheet" href='css/jquery-ui.css'>
+	<link rel="stylesheet" href='css/bootstrap.min.css'>
+	<link rel="stylesheet" href='css/BootSideMenu.css'>
+	<link rel="stylesheet" href='css/metisMenu.min.css'>
+	<link rel="stylesheet" href='css/mm-vertical.css'>
+	<link rel="stylesheet" id="themeChange" href='css/styles.css'>
+  </head>
+  <body>
+	<div class="loading" id="loading" style="display: none;">
+		<div class="loadText" >
+			<img src="images/loading.gif" alt="" height="150px"  width=""  /><br />
+			<strong>PLEASE WAIT</strong>
+		</div>
+	</div>
+    <div id="root"></div>
+    <script type='text/javascript' src="js/jquery-1.12.4.min.js"></script>
+    <script type='text/javascript' src="js/jquery-ui.js"></script>	  
+	<script type='text/javascript' src="js/bootstrap.min.js"></script>
+	<script type='text/javascript' src="js/w3.js"></script>
+	<script type='text/javascript' src="js/BootSideMenu.js"></script>	
+	<script type='text/javascript' src="js/metisMenu.min.js"></script>
+	<script type='text/javascript' src="js/jquery.dataTables.min.js"></script>
+	<script type='text/javascript' src="js/dataTables.bootstrap.min.js"></script>
+	<script type='text/javascript' src="js/simple-react-validator.js"></script>
+	<script type='text/javascript' src="js/scripts.js"></script>
+  <script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+
+$(document).ready(function() {
+    $('#dataTable1').DataTable({
+		"pageLength": 12,
+		"lengthMenu": [ 12, 24, 36, 48 ]
+	});
+
+	$('#ttdataTable').DataTable({
+		"dom":"<'row'<'col-sm-6'l><'col-sm-3'f><'col-sm-3 custom'>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+		"pageLength": 12,
+		"lengthMenu": [ 12, 24, 36, 48 ]
+	});
+	$("div.custom").html('<select><option value="">Select Option</option><option value="">Lien Not Applied For</option><option value="">Title Taken To DMV</option><option value="">Issues To Resolve</option><option value="">Not Able To Apply Lien</option><option value="">Title Returned From DMV</option><option value="">Lien Released</option><option value="">Sent To Auction</option><option value="">Sent To CSS</option><option value="">ETL</option></select>&nbsp;<button><img src="images/carTrack.png" /></button>');
+});
+</script>
+<script>
+    
+$(function(){
+	dshBrdHght();	
+});
+
+$( window ).resize(function() {
+	dshBrdHght();
+});
+
+function dshBrdHght(){
+	var winHght = $(window).height();
+	var dshHght = (winHght - 150)/2;
+	$("#dshBrd").css("height", dshHght+"px");
+	$(".dboard1").each(function(){
+		var dbrd =  $(this).height();
+		var topPos = dshHght - dbrd;
+		$(this).css("top", topPos+"px");
+	});
+	$(".dboard2").css("height", (dshHght-45)+"px");	
+}
+</script>
+<script>
+/***** font-size incrementer script ****/
+var $affectedElements = $("body, html");
+$(document).ready(function(){ 
+	// Can be extended, ex. $("div, p, span.someClass")
+	// Storing the original size in a data attribute so size can be reset
+	$affectedElements.each( function(){
+	  var $this = $(this);
+	  $this.data("orig-size", $this.css("font-size") );
+	});
+	
+	$(document).on("click", "#btn-increase", function(){
+	  changeFontSize(+1);
+	})
+	
+	$(document).on("click", "#btn-decrease", function(){
+		changeFontSize(-1);
+	})
+
+	$(document).on("click", "#btn-orig", function(){
+		$affectedElements.each( function(){
+			var $this = $(this);
+			$this.css( "font-size" , $this.data("orig-size") );
+	   });
+	})
+});
+
+function changeFontSize(direction){
+    $affectedElements.each( function(){
+        var $this = $(this);
+        $this.css( "font-size" , parseInt($this.css("font-size"))+direction );
+    });
+}
+
+$(document).ready(function(){
+	$(".fontChange").change(function(e){		
+		$("body, html").css("font-family", $(this).val());		
+	});
+});
+
+</script>
+<script>
+	$(document).ready(function() { 
+		$(".themeBlue").click(function() { 
+			$("#themeChange").attr("href",$(this).attr('rel'));		
+			return false;
+		});
+		$(".themeGrey").click(function() { 
+			$("#themeChange").attr("href",$(this).attr('rel'));		
+			return false;
+		});
+	});
+</script>
+
+	<script src="js/mm-ajax.js"></script>    
+  </body>  
+</html>
