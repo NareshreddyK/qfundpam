@@ -46,7 +46,7 @@ export default class CashManagement extends Component {
 	
 	return (<div className="height100">
 				<div className="searchListHolder2">
-					<h2> Cash Management </h2>					
+					<h2> Cash Management Git</h2>					
 					<div className="report-menu" id="main2">
 						<div className="scrollbar-inner">
 							 <div className="report-menu-height">
